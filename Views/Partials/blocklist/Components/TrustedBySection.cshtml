@@ -1,0 +1,44 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    var content = (ContentModels.TrustedBySection)Model.Content;
+    var globeImage = content.GlobeImage;
+    var teamImage = content.TeamImage;
+    var globeUrl = globeImage?.Url() ?? "";
+    var teamUrl = teamImage?.Url() ?? "";
+}
+
+@* En del av koden är genererad av CHAT GPT 5.1, struktur och design för bilderna.
+    globe bilden som bakgrund med opacity 20%, även hjälp med absolute positionering och z-index där globe har z-0 medan text, title och teambild har z-10 för att vara ovanpå.
+*@
+
+<section class="pt-32 pb-0 bg-white relative">
+    <div class="max-w-7xl mx-auto px-4 pb-0 relative">
+        <div class="absolute top-20 left-0 right-0 h-[400px] z-0">
+            <img src="@globeUrl" alt="" class="w-full h-full object-cover opacity-20">
+        </div>
+
+        <div class="relative z-10">
+            <div class="text-center mb-8">
+                <h2 class="text-[40px] font-bold leading-tight">
+                    <span class="text-[var(--clr-main)]">@content.SectionTitlePart1</span><br>
+                    <span class="text-[var(--clr-sub3)]">@content.SectionTitlePart2</span>
+                </h2>
+            </div>
+
+            <div class="text-center mb-8 max-w-2xl mx-auto">
+                <p class="text-[16px] text-gray-600">@content.Description</p>
+            </div>
+
+            <div class="text-center mb-12">
+                <a href="#" class="inline-block bg-[var(--clr-main)] text-[var(--clr-sub1)] font-bold px-8 py-3 rounded hover:opacity-90">
+                    @content.ButtonText
+                </a>
+            </div>
+        </div>
+
+        <div class="mb-0 relative z-10">
+            <img src="@teamUrl" alt="Team" class="w-full h-auto object-contain">
+        </div>
+    </div>
+</section>

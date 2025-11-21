@@ -1,0 +1,51 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    var content = (ContentModels.ContactInfoSection)Model.Content;
+    var personImage = content.PersonImage;
+    var imageUrl = personImage?.Url() ?? "";
+}
+
+<section class="py-0 bg-[var(--clr-white-100)] mb-0 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-2 gap-12 items-center">
+            <div class="relative">
+                <img src="~/images/Rectangle-Background.svg" alt="" class="absolute bottom-0 left-0 w-[90%] h-[59%] object-cover z-10">
+
+                <img src="@imageUrl" alt="Contact person" class="relative z-10 w-[80%] h-[90%] object-cover mt-10 z-20">
+
+                <img src="~/images/Dot-Background.svg" alt="" class="absolute top-12 right-16 w-110 h-90 z-0">
+            </div>
+
+            <div>
+                <h2 class="text-4xl font-bold text-[var(--clr-main)] mb-12 max-w-sm">@content.SectionTitle</h2>
+
+                <div class="space-y-10">
+                    <div class="flex items-start gap-3">
+                        <img src="~/images/Icon-Office-Location.svg" alt="" class="w-6 h-6">
+                        <div>
+                            <h3 class="font-semibold text-[var(--clr-main)]">Office location</h3>
+                            <p class="text-[var(--clr-main)]">@content.OfficeAddress</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <img src="~/images/Icon-Phone-Number.svg" alt="" class="w-6 h-6">
+                        <div>
+                            <h3 class="font-semibold text-[var(--clr-main)]">Phone number</h3>
+                            <p class="text-[var(--clr-main)]">@content.Phone</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <img src="~/images/Icon-Email-Address.svg" alt="" class="w-6 h-6">
+                        <div>
+                            <h3 class="font-semibold text-[var(--clr-main)]">E-mail address</h3>
+                            <p class="text-[var(--clr-main)]">@content.Email</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

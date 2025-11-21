@@ -1,0 +1,16 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    var content = (ContentModels.BannerSection)Model.Content;
+}
+
+<section class="bg-[#F7F7F7] py-16 text-center">
+    <div class="max-w-7xl mx-auto px-4">
+        <h1 class="text-[40px] font-bold text-[var(--clr-main)] mb-4">@content.BannerTitle</h1>
+
+
+        <p class="text-[14px] text-[var(--clr-body-text)]">
+            Home <span class="mx-2">></span> <span class="text-[var(--clr-sub3)]">@content.BannerTitle</span>
+        </p>
+    </div>
+</section>

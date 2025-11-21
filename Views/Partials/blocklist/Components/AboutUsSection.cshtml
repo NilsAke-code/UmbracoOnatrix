@@ -1,0 +1,56 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    var content = (ContentModels.AboutUsSection)Model.Content;
+    var signatureImage = content.SignatureImage;
+    var signatureUrl = signatureImage?.Url() ?? "";
+}
+
+@* Denna kod är generad med CHAT GPT 5.1
+    för formuläret har vi -mt-32 så det sticker upp och lägger sig en bit i Hero section.
+    vi använde w-[85%] för att få en bra bredd på formuläret och section har relative så överlappningen fungerar med andra sectionen.
+    vi har z-10 i diven ovan för formuläret så den ligger ovanpå hero section.
+*@
+
+<section class="py-16 bg-gray-50 relative">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-2 gap-12 items-start">
+            <div>
+                <p class="text-sm text-[var(--clr-sub3)] font-bold uppercase mb-2">@content.SectionLabel</p>
+
+                <!-- Detta är genererat med CHAT GPT 5.1, la in en <br> i Umbraco för radbrytning-->
+                <div class="mb-10 text-[40px] font-bold text-[var(--clr-main)] leading-tight whitespace-nowrap">@Html.Raw(content.SectionTitle)</div>
+
+                <p class="text-gray-600 mb-4 text-[20px]">@content.TextParagraph1</p>
+                <p class="text-gray-600 mb-6 text-[14px]">@content.TextParagraph2</p>
+
+                <img src="@signatureUrl" alt="Signature" class="mb-2 h-16">
+                <p class="text-sm text-gray-700 text-[14px]">@content.SignatureName</p>
+            </div>
+
+            <div class="shadow-md -mt-32 relative z-10 w-[85%]">
+                <div class="bg-[var(--clr-main)] p-6">
+                    <h3 class="text-[30px] font-bold text-[var(--clr-sub1)]">@content.FormTitle</h3>
+                </div>
+
+                <div class="bg-white p-8">
+                    <p class="text-sm text-gray-600 mb-6">@content.FormDescription</p>
+
+                    <form class="space-y-4">
+                        <input type="text" placeholder="Name" class="w-full border border-gray-200 rounded px-3 py-2 text-[13px] text-gray-400 focus:outline-none focus:border-gray-400">
+                        <input type="email" placeholder="Email" class="w-full border border-gray-200 rounded px-3 py-2 text-[13px] text-gray-400 focus:outline-none focus:border-gray-400">
+                        <input type="tel" placeholder="Phone" class="w-full border border-gray-200 rounded px-3 py-2 text-[13px] text-gray-400 focus:outline-none focus:border-gray-400">
+
+                        <select class="w-full border border-gray-200 rounded px-3 py-2 text-[13px] text-gray-400 focus:outline-none focus:border-gray-400">
+                            <option>Financial consulting</option>
+                            <option>Risk Management</option>
+                            <option>Bonds & Commodities</option>
+                        </select>
+
+                        <button type="submit" class="w-full bg-[var(--clr-sub1)] text-[var(--clr-main)] font-bold py-3 rounded hover:opacity-90 mb-0">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

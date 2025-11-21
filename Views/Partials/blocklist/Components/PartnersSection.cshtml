@@ -1,0 +1,24 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    var content = (ContentModels.PartnersSection)Model.Content;
+    var partner1 = content.Partner1?.Url() ?? "";
+    var partner2 = content.Partner2?.Url() ?? "";
+    var partner3 = content.Partner3?.Url() ?? "";
+    var partner4 = content.Partner4?.Url() ?? "";
+    var partner5 = content.Partner5?.Url() ?? "";
+    var partner6 = content.Partner6?.Url() ?? "";
+}
+
+<section class="bg-white pb-12 pt-60">
+    <div class="max-w-7xl mx-auto px-2">
+        <div class="grid grid-cols-6 gap-6 items-center justify-items-center">
+            <img src="@partner1" alt="Partner" class="h-10 grayscale hover:grayscale-0 transition">
+            <img src="@partner2" alt="Partner" class="h-10 grayscale hover:grayscale-0 transition">
+            <img src="@partner3" alt="Partner" class="h-10 grayscale hover:grayscale-0 transition">
+            <img src="@partner4" alt="Partner" class="h-10 grayscale hover:grayscale-0 transition">
+            <img src="@partner5" alt="Partner" class="h-10 grayscale hover:grayscale-0 transition">
+            <img src="@partner6" alt="Partner" class="h-10 grayscale hover:grayscale-0 transition">
+        </div>
+    </div>
+</section>

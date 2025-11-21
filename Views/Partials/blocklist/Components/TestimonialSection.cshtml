@@ -1,0 +1,39 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    var content = (ContentModels.TestimonialSection)Model.Content;
+    var ratingImage = content.RatingImage;
+    var personImage = content.PersonImage;
+    var ratingUrl = ratingImage?.Url() ?? "";
+    var personUrl = personImage?.Url() ?? "";
+}
+
+@*En del av koden är genererad med CHAT GPT 5.1
+    använt grid-cols-2 för att dela upp i två delar, bilden är absolute positionerad så den fyller hela höger sidan med right-0, top-0, bottom-0 och halva bredden w-1/2
+    section delen är relative satt för att bilden ska positionera sig mot den.
+*@
+
+<section class="bg-[var(--clr-white-100)] py-16 relative">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-2 gap-0">
+            <div class="pr-12">
+                <p class="text-[14px] font-bold text-[var(--clr-sub3)] uppercase mb-4">@content.Label</p>
+
+                <!-- Detta är genererat med CHAT GPT 5.1, la in en <br> i Umbraco för radbrytning-->
+                <h2 class="text-[40px] font-bold text-[var(--clr-main)] mb-6">@Html.Raw(content.Title)</h2>
+
+                <p class="text-[20px] italic mb-4" style="color: #999999;">@content.Description</p>
+
+                <img src="@ratingUrl" alt="Rating" class="h-3.5 mb-6">
+
+                <p class="text-[14px] mb-2" style="color: #2D303A;">@content.PersonName</p>
+
+                <p class="text-[20px] italic" style="color: #2D303A;">@content.CompanyName</p>
+            </div>
+
+            <div class="absolute right-0 top-0 bottom-0 w-1/2">
+                <img src="@personUrl" alt="@content.PersonName" class="w-full h-full object-cover">
+            </div>
+        </div>
+    </div>
+</section>

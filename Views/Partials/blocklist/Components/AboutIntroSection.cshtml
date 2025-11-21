@@ -1,0 +1,29 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    var content = (ContentModels.AboutIntroSection)Model.Content;
+    var personImage = content.PersonImage;
+    var imageUrl = personImage?.Url() ?? "";
+}
+
+<section class="pt-24 pb-12 bg-[var(--clr-neutral)]">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="flex gap-8 items-start">
+            <div style="width: 500px;">
+                <img src="@imageUrl" alt="@content.PersonName" class="w-full h-auto object-cover mb-4">
+                <p class="text-[16px] italic text-[var(--clr-main)]">@content.PersonName</p>
+            </div>
+
+            <div class="flex-1 space-y-10">
+                <p class="text-[20px] text-[var(--clr-body-text)]">@content.Text1</p>
+                <p class="text-[14px] text-[var(--clr-body-text)]">@content.Text2</p>
+                <p class="text-[14px] text-[var(--clr-body-text)]">@content.Text3</p>
+                <p class="text-[14px] text-[var(--clr-body-text)]">@content.Text4</p>
+                <p class="text-[14px] text-[var(--clr-body-text)]">@content.Text5</p>
+                <p class="text-[14px] text-[var(--clr-body-text)]">@content.Text6</p>
+                <p class="text-[14px] text-[var(--clr-body-text)]">@content.Text7</p>
+                <p class="text-[14px] text-[var(--clr-body-text)]">@content.Text8</p>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,127 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    var content = (ContentModels.ServiceDetailContentSection)Model.Content;
+
+    var videoImage = content.VideoConferenceImage?.Url() ?? "";
+    var envelopeIcon = content.EnvelopeIcon?.Url() ?? "";
+    var mainImage1 = content.MainImage1?.Url() ?? "";
+    var mainImage2 = content.MainImage2?.Url() ?? "";
+    var dotIcon = content.DotListIcon?.Url() ?? "";
+}
+
+
+@* Denna kod är genererad med CHAT GPT 5.1
+    sidebar har en fast bredd på 306px så den förhåller sig till det.
+    vertikala linjen på 1px separerar innehållet från sidebar och content.
+    main content har en bredd på 768px för att matcha bredden på bilderna och ville få texten i content att hålla sig inom den bredden.
+*@
+
+
+<section class="bg-white py-16">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="flex gap-8 mb-8">
+
+            <div style="width: 306px;">
+                <h3 class="text-[22px] font-semibold text-[var(--clr-main)] mb-4">@content.SidebarTitle</h3>
+                <img src="@videoImage" alt="Video Conference" class="w-full mb-4">
+                <p class="text-[14px] text-[var(--clr-body-text)] mb-8">@content.AboutUsText</p>
+
+                <div class="bg-[var(--clr-main)] p-6" style="height: 223px;">
+                    <h4 class="text-[22px] font-semibold text-[var(--clr-sub1)] mb-4">@content.ContactTitle</h4>
+                    <p class="text-[14px] text-white mb-4">@content.ContactText</p>
+                    <div class="relative">
+                        <input type="email" placeholder="E-mail address" class="w-full border border-gray-200 rounded px-3 py-2 pr-10 text-[14px] text-[#AAAAAA]">
+                        <img src="@envelopeIcon" alt="" class="absolute right-3 top-1/2 transform -translate-y-1/2 h-4">
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative" style="width: 1px;">
+                <div class="absolute left-0 top-0 w-px bg-[#EAEAEA] h-full"></div>
+            </div>
+
+            <div style="width: 768px;">
+                <img src="@mainImage1" alt="" style="width: 768px; height: 456px;" class="object-cover mb-4">
+
+                <h3 class="text-[20px] font-bold text-[var(--clr-main)] mb-4">@content.KeyPointTitle</h3>
+                <ul class="space-y-2 mb-4">
+                    <li class="flex items-start gap-2">
+                        <img src="@dotIcon" alt="" class="w-6 h-6 mt-1">
+                        <span class="text-[14px] text-[var(--clr-body-text)]">@content.KeyList1</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <img src="@dotIcon" alt="" class="w-6 h-6 mt-1">
+                        <span class="text-[14px] text-[var(--clr-body-text)]">@content.KeyList2</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <img src="@dotIcon" alt="" class="w-6 h-6 mt-1">
+                        <span class="text-[14px] text-[var(--clr-body-text)]">@content.KeyList3</span>
+                    </li>
+                </ul>
+
+                <h3 class="text-[20px] font-bold text-[var(--clr-main)] mb-4">@content.SectionTitle1</h3>
+                <p class="text-[14px] text-[var(--clr-body-text)] mb-2">@content.SectionText1</p>
+                <p class="text-[14px] text-[var(--clr-body-text)] mb-4">@content.SectionText2</p>
+
+                <h4 class="text-[14px] text-[var(--clr-body-text)] mb-2">@content.SectionTitle2</h4>
+                <ul class="space-y-2 mb-4">
+                    <li class="flex items-start gap-2">
+                        <img src="@dotIcon" alt="" class="w-6 h-6 mt-1">
+                        <span class="text-[14px] text-[var(--clr-body-text)]">@content.ListText1</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <img src="@dotIcon" alt="" class="w-6 h-6 mt-1">
+                        <span class="text-[14px] text-[var(--clr-body-text)]">@content.ListText2</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <img src="@dotIcon" alt="" class="w-6 h-6 mt-1">
+                        <span class="text-[14px] text-[var(--clr-body-text)]">@content.ListText3</span>
+                    </li>
+                </ul>
+
+                <p class="text-[14px] text-[var(--clr-body-text)] mb-2">@content.SectionText3</p>
+                <p class="text-[14px] text-[var(--clr-body-text)] mb-4">@content.SectionText4</p>
+
+                <img src="@mainImage2" alt="" style="width: 768px; height: 456px;" class="object-cover mb-4">
+
+                <h3 class="text-[20px] font-bold text-[var(--clr-main)] mb-2">@content.SectionTitle3</h3>
+                <h4 class="text-[14px] text-[var(--clr-body-text)] mb-2">@content.SectionTitle4</h4>
+                <ul class="space-y-2">
+                    <li class="flex items-start gap-2">
+                        <img src="@dotIcon" alt="" class="w-6 h-6 mt-1">
+                        <span class="text-[14px] text-[var(--clr-body-text)]">@content.ListText4</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <img src="@dotIcon" alt="" class="w-6 h-6 mt-1">
+                        <span class="text-[14px] text-[var(--clr-body-text)]">@content.ListText5</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <img src="@dotIcon" alt="" class="w-6 h-6 mt-1">
+                        <span class="text-[14px] text-[var(--clr-body-text)]">@content.ListText6</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <img src="@dotIcon" alt="" class="w-6 h-6 mt-1">
+                        <span class="text-[14px] text-[var(--clr-body-text)]">@content.ListText7</span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div>
+            @* Formuläret ligger utanför flex-containern för att spänna över hela bredden för sidebar och content. *@
+
+            <h3 class="text-[25px] font-bold text-[var(--clr-main)] mb-4">@content.FormTitle</h3>
+            <form class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <input type="text" placeholder="Name" class="border border-gray-200 rounded px-3 py-2 text-[14px] text-[#AAAAAA]">
+                    <input type="email" placeholder="Email" class="border border-gray-200 rounded px-3 py-2 text-[14px] text-[#AAAAAA]">
+                </div>
+                <textarea placeholder="Question" rows="6" class="w-full border border-gray-200 rounded px-3 py-2 text-[14px] text-[#AAAAAA]"></textarea>
+                <button type="submit" class="bg-[var(--clr-main)] text-[var(--clr-sub1)] font-bold text-[16px] rounded hover:opacity-90" style="width: 140px; height: 54px;">Submit</button>
+            </form>
+        </div>
+
+    </div>
+</section>

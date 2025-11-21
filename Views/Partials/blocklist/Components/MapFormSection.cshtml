@@ -1,0 +1,52 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    var content = (ContentModels.MapFormSection)Model.Content;
+    var mapImage = content.MapImage;
+    var mapUrl = mapImage?.Url() ?? "";
+}
+
+@* En del av koden är genererad med CHATGPT 5.1
+    formuläret har -mb-80 så den sticker ner i nästa section till Partners section och även overflow-visible så den inte bryts.
+    karta bilden ligger som ett style attribut inline för att formuläret/innehållet ska ligga ovanpå. background-size: cover för att täcka hela ytan och center för att centrera.
+*@
+
+<section class="relative overflow-visible py-48" style="background-image: url('@mapUrl'); background-size: cover; background-position: center;">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="bg-white shadow-2xl max-w-5xl mx-auto p-12 -mb-80 relative z-10">
+            <p class="text-[14px] font-bold text-[var(--clr-sub3)] uppercase text-center mb-4">@content.FormLabel</p>
+
+            <h2 class="text-[40px] font-bold text-[var(--clr-main)] text-center mb-4">
+                @content.FormTitleLine1<br>@content.FormTitleLine2
+            </h2>
+
+
+            <!-- Detta är genererat med CHAT GPT 5.1, la in en <br> i Umbraco för radbrytning-->
+            <p class="text-[14px] italic text-center mb-8 max-w-2xl mx-auto">@Html.Raw(content.FormDescription)</p>
+
+            <form class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-4">
+                        <input type="text" placeholder="Name" class="w-full border border-gray-200 rounded px-4 py-3 text-[13px] focus:outline-none focus:border-gray-400">
+                        <input type="email" placeholder="Email Address" class="w-full border border-gray-200 rounded px-4 py-3 text-[13px] focus:outline-none focus:border-gray-400">
+                    </div>
+
+                    <div class="space-y-4">
+                        <input type="tel" placeholder="Phone" class="w-full border border-gray-200 rounded px-4 py-3 text-[13px] focus:outline-none focus:border-gray-400">
+                        <select class="w-full border border-gray-200 rounded px-4 py-3 text-[13px] text-gray-400 focus:outline-none focus:border-gray-400">
+                            <option>Financial consulting</option>
+                            <option>Risk Management</option>
+                            <option>Bonds & Commodities</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="bg-[var(--clr-main)] text-[var(--clr-sub1)] font-bold text-[16px] rounded hover:opacity-90" style="width: 140px; height: 54px;">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
